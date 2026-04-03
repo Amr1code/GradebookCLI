@@ -1,0 +1,175 @@
+2026-04-03 16:06:44,850 - INFO - Gradebook CLI started
+2026-04-03 16:06:44,861 - ERROR - Data file not found: 'data/gradebook.json'
+Traceback (most recent call last):
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\gradebook\storage.py", line 16, in load_data
+    with open(filepath, "r", encoding="utf-8") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'data/gradebook.json'
+2026-04-03 16:06:44,863 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:06:44,863 - INFO - Command executed successfully: add-student
+2026-04-03 16:06:44,923 - INFO - Gradebook CLI started
+2026-04-03 16:06:44,937 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:06:44,938 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:06:44,938 - INFO - Command executed successfully: add-course
+2026-04-03 16:06:44,996 - INFO - Gradebook CLI started
+2026-04-03 16:06:45,010 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:06:45,011 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:06:45,011 - INFO - Command executed successfully: enroll
+2026-04-03 16:06:45,071 - INFO - Gradebook CLI started
+2026-04-03 16:06:45,087 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:06:45,087 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:06:45,087 - INFO - Command executed successfully: add-grade
+2026-04-03 16:06:45,152 - INFO - Gradebook CLI started
+2026-04-03 16:06:45,167 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:06:45,168 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:06:45,168 - INFO - Command executed successfully: list
+2026-04-03 16:06:45,228 - INFO - Gradebook CLI started
+2026-04-03 16:06:45,238 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:06:45,239 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:06:45,239 - INFO - Command executed successfully: list
+2026-04-03 16:06:45,297 - INFO - Gradebook CLI started
+2026-04-03 16:06:45,307 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:06:45,308 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:06:45,308 - INFO - Command executed successfully: list
+2026-04-03 16:06:45,366 - INFO - Gradebook CLI started
+2026-04-03 16:06:45,376 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:06:45,376 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:06:45,376 - INFO - Command executed successfully: avg
+2026-04-03 16:06:45,435 - INFO - Gradebook CLI started
+2026-04-03 16:06:45,445 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:06:45,446 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:06:45,446 - INFO - Command executed successfully: gpa
+2026-04-03 16:06:45,511 - INFO - Gradebook CLI started
+2026-04-03 16:06:45,522 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:06:45,523 - ERROR - Validation error during CLI execution
+Traceback (most recent call last):
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 170, in main
+    run_cli(args)
+    ~~~~~~~^^^^^^
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 102, in run_cli
+    grade = parse_grade(args.grade)
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\gradebook\validators.py", line 19, in parse_grade
+    raise ValueError("Grade must be between 0 and 100")
+ValueError: Grade must be between 0 and 100
+2026-04-03 16:29:29,581 - INFO - Gradebook CLI started
+2026-04-03 16:29:29,591 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:29:29,591 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:29:29,591 - INFO - Command executed successfully: add-student
+2026-04-03 16:29:29,650 - INFO - Gradebook CLI started
+2026-04-03 16:29:29,667 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:29:29,668 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:29:29,668 - INFO - Command executed successfully: add-course
+2026-04-03 16:29:29,727 - INFO - Gradebook CLI started
+2026-04-03 16:29:29,743 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:29:29,744 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:29:29,744 - INFO - Command executed successfully: enroll
+2026-04-03 16:29:29,802 - INFO - Gradebook CLI started
+2026-04-03 16:29:29,817 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:29:29,818 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:29:29,818 - INFO - Command executed successfully: add-grade
+2026-04-03 16:29:29,875 - INFO - Gradebook CLI started
+2026-04-03 16:29:29,891 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:29:29,891 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:29:29,891 - INFO - Command executed successfully: list
+2026-04-03 16:29:29,948 - INFO - Gradebook CLI started
+2026-04-03 16:29:29,957 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:29:29,958 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:29:29,958 - INFO - Command executed successfully: list
+2026-04-03 16:29:30,016 - INFO - Gradebook CLI started
+2026-04-03 16:29:30,026 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:29:30,026 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:29:30,026 - INFO - Command executed successfully: list
+2026-04-03 16:29:30,084 - INFO - Gradebook CLI started
+2026-04-03 16:29:30,094 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:29:30,094 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:29:30,094 - INFO - Command executed successfully: avg
+2026-04-03 16:29:30,153 - INFO - Gradebook CLI started
+2026-04-03 16:29:30,163 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:29:30,164 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:29:30,164 - INFO - Command executed successfully: gpa
+2026-04-03 16:29:30,221 - INFO - Gradebook CLI started
+2026-04-03 16:29:30,231 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:29:30,231 - ERROR - Validation error during CLI execution
+Traceback (most recent call last):
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 167, in main
+    run_cli(args)
+    ~~~~~~~^^^^^^
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 99, in run_cli
+    grade = parse_grade(args.grade)
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\gradebook\validators.py", line 42, in parse_grade
+    raise ValueError("Grade must be between 0 and 100")
+ValueError: Grade must be between 0 and 100
+2026-04-03 16:30:24,671 - INFO - Gradebook CLI started
+2026-04-03 16:30:24,681 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:30:24,681 - ERROR - Validation error during CLI execution
+Traceback (most recent call last):
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 167, in main
+    run_cli(args)
+    ~~~~~~~^^^^^^
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 78, in run_cli
+    created = add_student(data, student_id, name)
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\gradebook\service.py", line 21, in add_student
+    raise ValueError(f"Student with id '{student_id}' already exists")
+ValueError: Student with id 's1' already exists
+2026-04-03 16:30:24,742 - INFO - Gradebook CLI started
+2026-04-03 16:30:24,751 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:30:24,751 - ERROR - Validation error during CLI execution
+Traceback (most recent call last):
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 167, in main
+    run_cli(args)
+    ~~~~~~~^^^^^^
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 90, in run_cli
+    created = enroll_student_in_course(data, student_id, course_code)
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\gradebook\service.py", line 74, in enroll_student_in_course
+    raise ValueError(f"Student '{student_id}' does not exist")
+ValueError: Student 's999' does not exist
+2026-04-03 16:30:24,810 - INFO - Gradebook CLI started
+2026-04-03 16:30:24,819 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:30:24,819 - ERROR - Validation error during CLI execution
+Traceback (most recent call last):
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 167, in main
+    run_cli(args)
+    ~~~~~~~^^^^^^
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 90, in run_cli
+    created = enroll_student_in_course(data, student_id, course_code)
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\gradebook\service.py", line 78, in enroll_student_in_course
+    raise ValueError(f"Course '{course_code}' does not exist")
+ValueError: Course 'BIO999' does not exist
+2026-04-03 16:30:24,878 - INFO - Gradebook CLI started
+2026-04-03 16:30:24,888 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:30:24,888 - ERROR - Validation error during CLI execution
+Traceback (most recent call last):
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 167, in main
+    run_cli(args)
+    ~~~~~~~^^^^^^
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 100, in run_cli
+    updated = add_grade_to_enrollment(
+        data,
+    ...<2 lines>...
+        grade,
+    )
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\gradebook\service.py", line 124, in add_grade_to_enrollment
+    raise ValueError(
+        f"Enrollment for student '{student_id}' in course '{course_code}' not found"
+    )
+ValueError: Enrollment for student 's1' in course 'BIO999' not found
+2026-04-03 16:30:24,947 - INFO - Gradebook CLI started
+2026-04-03 16:30:24,957 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:30:24,957 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:30:24,957 - INFO - Command executed successfully: avg
+2026-04-03 16:30:25,016 - INFO - Gradebook CLI started
+2026-04-03 16:30:25,026 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:30:25,027 - INFO - Data saved successfully to 'data/gradebook.json'
+2026-04-03 16:30:25,027 - INFO - Command executed successfully: gpa
+2026-04-03 16:30:25,087 - INFO - Gradebook CLI started
+2026-04-03 16:30:25,096 - INFO - Data loaded successfully from 'data/gradebook.json'
+2026-04-03 16:30:25,096 - ERROR - Validation error during CLI execution
+Traceback (most recent call last):
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 167, in main
+    run_cli(args)
+    ~~~~~~~^^^^^^
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\main.py", line 131, in run_cli
+    student_id = parse_non_empty(args.student_id, "--student-id")
+  File "C:\Users\sufja\OneDrive\Desktop\Genpact\Python\Projects\GradeBook-CLI\gradebook\validators.py", line 15, in parse_non_empty
+    raise ValueError(f"{field_name} is required")
+ValueError: --student-id is required

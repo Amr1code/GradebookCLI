@@ -1,0 +1,70 @@
+{
+  "students": [
+    {
+      "id": "s1",
+      "name": "Arben"
+    },
+    {
+      "id": "s2",
+      "name": "Teuta"
+    },
+    {
+      "id": "s3",
+      "name": "Dritan"
+    }
+  ],
+  "courses": [
+    {
+      "code": "MAT101",
+      "title": "Matematik\u00eb"
+    },
+    {
+      "code": "HIS201",
+      "title": "Histori"
+    },
+    {
+      "code": "LET301",
+      "title": "Let\u00ebrsi"
+    }
+  ],
+  "enrollments": [
+    {
+      "student_id": "s1",
+      "course_code": "MAT101",
+      "grades": [
+        88.0,
+        92.0
+      ]
+    },
+    {
+      "student_id": "s1",
+      "course_code": "HIS201",
+      "grades": [
+        81.0
+      ]
+    },
+    {
+      "student_id": "s2",
+      "course_code": "MAT101",
+      "grades": [
+        95.0,
+        90.0
+      ]
+    },
+    {
+      "student_id": "s2",
+      "course_code": "LET301",
+      "grades": [
+        87.0
+      ]
+    },
+    {
+      "student_id": "s3",
+      "course_code": "HIS201",
+      "grades": [
+        78.0,
+        84.0
+      ]
+    }
+  ]
+}
