@@ -1,0 +1,9 @@
+# Runtime data file
+data/gradebook.json
+
+# Logs
+logs/*.log
+
+# Python cache
+__pycache__/
+*/__pycache__/
