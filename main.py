@@ -1,4 +1,6 @@
 import argparse
+import logging
+import os
 
 from gradebook.service import (
 	add_course,
@@ -13,6 +15,18 @@ from gradebook.service import (
 )
 from gradebook.storage import load_data, save_data
 from gradebook.validators import parse_grade, parse_non_empty
+
+
+def configure_logging(log_filepath="logs/app.log"):
+	log_dir = os.path.dirname(log_filepath)
+	if log_dir:
+		os.makedirs(log_dir, exist_ok=True)
+
+	logging.basicConfig(
+		filename=log_filepath,
+		level=logging.INFO,
+		format="%(asctime)s - %(levelname)s - %(message)s",
+	)
 
 
 def build_parser():
@@ -146,14 +160,20 @@ def run_cli(args):
 
 
 def main():
+	configure_logging()
+	logging.info("Gradebook CLI started")
+
 	parser = build_parser()
 	args = parser.parse_args()
 
 	try:
 		run_cli(args)
+		logging.info("Command executed successfully: %s", args.command)
 	except ValueError as exc:
+		logging.error("Validation error during CLI execution", exc_info=True)
 		print(f"Error: {exc}")
 	except Exception as exc:
+		logging.error("Unexpected CLI error", exc_info=True)
 		print(f"Unexpected error: {exc}")
 
 

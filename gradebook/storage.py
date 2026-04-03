@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 
 
@@ -22,14 +23,18 @@ def load_data(filepath="data/gradebook.json"):
         data.setdefault("students", [])
         data.setdefault("courses", [])
         data.setdefault("enrollments", [])
+        logging.info("Data loaded successfully from '%s'", filepath)
         return data
 
     except FileNotFoundError:
+        logging.error("Data file not found: '%s'", filepath, exc_info=True)
         return _empty_data()
     except json.JSONDecodeError:
+        logging.error("JSON decode failed for '%s'", filepath, exc_info=True)
         print(f"Error: The file '{filepath}' is corrupted or not valid JSON.")
         return _empty_data()
     except OSError as exc:
+        logging.error("OS error while reading '%s'", filepath, exc_info=True)
         print(f"Error reading '{filepath}': {exc}")
         return _empty_data()
 
@@ -42,5 +47,7 @@ def save_data(data, filepath="data/gradebook.json"):
 
         with open(filepath, "w", encoding="utf-8") as file:
             json.dump(data, file, indent=2)
+        logging.info("Data saved successfully to '%s'", filepath)
     except OSError as exc:
+        logging.error("OS error while saving '%s'", filepath, exc_info=True)
         print(f"Error saving data to '{filepath}': {exc}")
