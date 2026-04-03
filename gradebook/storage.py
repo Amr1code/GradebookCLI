@@ -4,6 +4,11 @@ import os
 
 
 def _empty_data():
+    """Return a normalized empty gradebook structure.
+
+    Returns:
+        dict: Dictionary with empty students, courses, and enrollments lists.
+    """
     return {
         "students": [],
         "courses": [],
@@ -12,6 +17,18 @@ def _empty_data():
 
 
 def load_data(filepath="data/gradebook.json"):
+    """Load gradebook data from a JSON file.
+
+    Args:
+        filepath (str): Path to the JSON persistence file.
+
+    Returns:
+        dict: Loaded gradebook data or an empty structure when unavailable.
+
+    Raises:
+        This function does not re-raise exceptions. File and decode errors are
+        handled internally and logged.
+    """
     try:
         with open(filepath, "r", encoding="utf-8") as file:
             data = json.load(file)
@@ -40,6 +57,19 @@ def load_data(filepath="data/gradebook.json"):
 
 
 def save_data(data, filepath="data/gradebook.json"):
+    """Persist gradebook data to a JSON file.
+
+    Args:
+        data (dict): Gradebook data dictionary to save.
+        filepath (str): Path to the JSON persistence file.
+
+    Returns:
+        None
+
+    Raises:
+        This function does not re-raise exceptions. Save errors are handled
+        internally and logged.
+    """
     try:
         directory = os.path.dirname(filepath)
         if directory:

@@ -1,7 +1,20 @@
-from gradebook.models import Course, Enrollment, Student
+from .models import Course, Enrollment, Student
 
 
 def add_student(data, student_id, name):
+    """Add a new student record to the data dictionary.
+
+    Args:
+        data (dict): Main gradebook dictionary.
+        student_id (int | str): Unique student identifier.
+        name (str): Student display name.
+
+    Returns:
+        dict: The created student record.
+
+    Raises:
+        ValueError: If the student already exists or input is invalid.
+    """
     students = data.setdefault("students", [])
     existing_students = {student["id"]: student for student in students if "id" in student}
     if student_id in existing_students:
@@ -14,6 +27,19 @@ def add_student(data, student_id, name):
 
 
 def add_course(data, code, title):
+    """Add a new course record to the data dictionary.
+
+    Args:
+        data (dict): Main gradebook dictionary.
+        code (str): Unique course code.
+        title (str): Course title.
+
+    Returns:
+        dict: The created course record.
+
+    Raises:
+        ValueError: If the course already exists or input is invalid.
+    """
     courses = data.setdefault("courses", [])
     existing_courses = {course["code"]: course for course in courses if "code" in course}
     if code in existing_courses:
@@ -26,6 +52,19 @@ def add_course(data, code, title):
 
 
 def enroll_student_in_course(data, student_id, course_code):
+    """Create an enrollment between an existing student and course.
+
+    Args:
+        data (dict): Main gradebook dictionary.
+        student_id (int | str): Student identifier.
+        course_code (str): Course code.
+
+    Returns:
+        dict: The created enrollment record.
+
+    Raises:
+        ValueError: If the student or course does not exist, or enrollment exists.
+    """
     students = data.setdefault("students", [])
     courses = data.setdefault("courses", [])
     enrollments = data.setdefault("enrollments", [])
@@ -60,6 +99,20 @@ def enroll_student_in_course(data, student_id, course_code):
 
 
 def add_grade_to_enrollment(data, student_id, course_code, grade):
+    """Add a validated grade to an existing enrollment.
+
+    Args:
+        data (dict): Main gradebook dictionary.
+        student_id (int | str): Student identifier.
+        course_code (str): Course code.
+        grade (int | float): Grade value between 0 and 100.
+
+    Returns:
+        dict: The updated enrollment record.
+
+    Raises:
+        ValueError: If enrollment is missing or grade is invalid.
+    """
     enrollments = data.setdefault("enrollments", [])
     matching_enrollments = [
         enrollment
@@ -81,6 +134,14 @@ def add_grade_to_enrollment(data, student_id, course_code, grade):
 
 
 def list_all_students(data):
+    """Return all students sorted alphabetically by name.
+
+    Args:
+        data (dict): Main gradebook dictionary.
+
+    Returns:
+        list[dict]: Student records with id and name keys.
+    """
     students = [
         {"id": student.get("id"), "name": student.get("name", "")}
         for student in data.get("students", [])
@@ -89,6 +150,14 @@ def list_all_students(data):
 
 
 def list_all_courses(data):
+    """Return all courses sorted by course code.
+
+    Args:
+        data (dict): Main gradebook dictionary.
+
+    Returns:
+        list[dict]: Course records with code and title keys.
+    """
     courses = [
         {"code": course.get("code", ""), "title": course.get("title", "")}
         for course in data.get("courses", [])
@@ -97,6 +166,15 @@ def list_all_courses(data):
 
 
 def list_enrollments_for_student(data, student_id):
+    """Return all enrollments for a student sorted by course code.
+
+    Args:
+        data (dict): Main gradebook dictionary.
+        student_id (int | str): Student identifier.
+
+    Returns:
+        list[dict]: Enrollment records for the specified student.
+    """
     enrollments = [
         enrollment
         for enrollment in data.get("enrollments", [])
@@ -106,6 +184,15 @@ def list_enrollments_for_student(data, student_id):
 
 
 def compute_student_average(data, student_id):
+    """Compute the arithmetic mean of all grades for a student.
+
+    Args:
+        data (dict): Main gradebook dictionary.
+        student_id (int | str): Student identifier.
+
+    Returns:
+        float | None: Average grade, or None when the student has no grades.
+    """
     grades = [
         grade
         for enrollment in data.get("enrollments", [])
@@ -119,6 +206,17 @@ def compute_student_average(data, student_id):
 
 
 def compute_student_gpa(data, student_id):
+    """Compute GPA on a 0.0-4.0 scale from a student's average grade.
+
+    The current mapping is linear: GPA = average / 25, clamped to [0.0, 4.0].
+
+    Args:
+        data (dict): Main gradebook dictionary.
+        student_id (int | str): Student identifier.
+
+    Returns:
+        float | None: GPA rounded to two decimals, or None if no grades exist.
+    """
     average = compute_student_average(data, student_id)
     if average is None:
         return None
