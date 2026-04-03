@@ -12,6 +12,7 @@ from gradebook.service import (
 	list_enrollments_for_student,
 )
 from gradebook.storage import load_data, save_data
+from gradebook.validators import parse_grade, parse_non_empty
 
 
 def build_parser():
@@ -35,7 +36,7 @@ def build_parser():
 	)
 	add_grade_parser.add_argument("student_id", help="Student id")
 	add_grade_parser.add_argument("course_code", help="Course code")
-	add_grade_parser.add_argument("grade", type=float, help="Grade value (0-100)")
+	add_grade_parser.add_argument("grade", help="Grade value (0-100)")
 
 	list_parser = subparsers.add_parser("list", help="List students, courses, or enrollments")
 	list_parser.add_argument(
@@ -61,26 +62,35 @@ def run_cli(args):
 	data = load_data()
 
 	if args.command == "add-student":
-		created = add_student(data, args.student_id, args.name)
+		student_id = parse_non_empty(args.student_id, "student_id")
+		name = parse_non_empty(args.name, "name")
+		created = add_student(data, student_id, name)
 		print(f"Added student: {created['id']} - {created['name']}")
 
 	elif args.command == "add-course":
-		created = add_course(data, args.code, args.title)
+		code = parse_non_empty(args.code, "code")
+		title = parse_non_empty(args.title, "title")
+		created = add_course(data, code, title)
 		print(f"Added course: {created['code']} - {created['title']}")
 
 	elif args.command == "enroll":
-		created = enroll_student_in_course(data, args.student_id, args.course_code)
+		student_id = parse_non_empty(args.student_id, "student_id")
+		course_code = parse_non_empty(args.course_code, "course_code")
+		created = enroll_student_in_course(data, student_id, course_code)
 		print(
 			"Enrollment created: "
 			f"student={created['student_id']}, course={created['course_code']}"
 		)
 
 	elif args.command == "add-grade":
+		student_id = parse_non_empty(args.student_id, "student_id")
+		course_code = parse_non_empty(args.course_code, "course_code")
+		grade = parse_grade(args.grade)
 		updated = add_grade_to_enrollment(
 			data,
-			args.student_id,
-			args.course_code,
-			args.grade,
+			student_id,
+			course_code,
+			grade,
 		)
 		last_grade = updated.get("grades", [])[-1]
 		print(
@@ -107,29 +117,30 @@ def run_cli(args):
 					print(f"{course['code']}: {course['title']}")
 
 		elif args.resource == "enrollments":
-			if not args.student_id:
-				raise ValueError("--student-id is required when listing enrollments")
-			enrollments = list_enrollments_for_student(data, args.student_id)
+			student_id = parse_non_empty(args.student_id, "--student-id")
+			enrollments = list_enrollments_for_student(data, student_id)
 			if not enrollments:
-				print(f"No enrollments found for student '{args.student_id}'.")
+				print(f"No enrollments found for student '{student_id}'.")
 			else:
 				for enrollment in enrollments:
 					grades = enrollment.get("grades", [])
 					print(f"{enrollment['course_code']}: grades={grades}")
 
 	elif args.command == "avg":
-		avg = compute_student_average(data, args.student_id)
+		student_id = parse_non_empty(args.student_id, "student_id")
+		avg = compute_student_average(data, student_id)
 		if avg is None:
-			print(f"No grades found for student '{args.student_id}'.")
+			print(f"No grades found for student '{student_id}'.")
 		else:
-			print(f"Average for student '{args.student_id}': {avg:.2f}")
+			print(f"Average for student '{student_id}': {avg:.2f}")
 
 	elif args.command == "gpa":
-		gpa = compute_student_gpa(data, args.student_id)
+		student_id = parse_non_empty(args.student_id, "student_id")
+		gpa = compute_student_gpa(data, student_id)
 		if gpa is None:
-			print(f"No grades found for student '{args.student_id}'.")
+			print(f"No grades found for student '{student_id}'.")
 		else:
-			print(f"GPA for student '{args.student_id}': {gpa:.2f}")
+			print(f"GPA for student '{student_id}': {gpa:.2f}")
 
 	save_data(data)
 
